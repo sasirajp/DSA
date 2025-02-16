@@ -3,30 +3,24 @@ package recursion;
 import java.util.Arrays;
 import java.util.Stack;
 
-public class SortStack {
+public class DeleteMiddleInStack {
     public static void main(String[] args) {
         Stack<Integer> stack = new Stack<>();
-        stack.addAll(Arrays.asList(3, 2, 1, 5, 7, 44, 23, 11, 10));
+        stack.addAll(Arrays.asList(1, 2, 3, 4, 5));
         System.out.println(stack);
-        sort(stack, stack.size());
+        int middleIndex = (stack.size() / 2) + 1;
+        System.out.println(middleIndex - 1);
+        removeMiddle(stack, middleIndex);
         System.out.println(stack);
     }
 
-    private static void sort(Stack<Integer> stack, int length) {
-        if (length == 1)
-            return;
-        int value = stack.pop();
-        sort(stack, length - 1);
-        insertValue2(stack, value);
-    }
-
-    private static void insertValue2(Stack<Integer> stack, int value) {
-        if (stack.size() == 0 || stack.peek() < value) {
-            stack.push(value);
+    private static void removeMiddle(Stack<Integer> stack, int middleIndex) {
+        if (1 == middleIndex) {
+            stack.pop();
             return;
         }
         int val = stack.pop();
-        insertValue2(stack, value);
+        removeMiddle(stack, middleIndex - 1);
         stack.push(val);
     }
 
