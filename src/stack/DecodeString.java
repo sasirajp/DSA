@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class DecodeString {
     public static void main(String[] args) {
-        String ans = decodeString("10[a]");
+        String ans = decodeString("10[ab5[f]]");
         System.out.println(ans);
     }
 

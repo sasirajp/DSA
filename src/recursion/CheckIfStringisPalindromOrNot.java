@@ -1,20 +1,16 @@
 package recursion;
 
-import java.util.Arrays;
-import java.util.Stack;
-
 public class CheckIfStringisPalindromOrNot {
     public static void main(String[] args) {
-        String str = "abcd,dcbe";
-        var ans = new CheckIfStringisPalindromOrNot().isPalindrome(str);
-        System.out.println(ans);
+        String str = "abcba";
+        System.out.println(isPalindrome(str));
     }
 
-    public boolean isPalindrome(String s) {
+    public static boolean isPalindrome(String s) {
         return func(new StringBuilder(s), 0, s.length() - 1);
     }
 
-    private boolean func(StringBuilder s, int i, int l) {
+    private static boolean func(StringBuilder s, int i, int l) {
         if (i >= l) {
             return true;
         }

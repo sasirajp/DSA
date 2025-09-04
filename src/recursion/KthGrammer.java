@@ -3,7 +3,7 @@ package recursion;
 public class KthGrammer {
     public static void main(String[] args) {
         int n = 3, k = 1;
-        new KthGrammer().kthGrammar(n, k);
+        kthGrammar(n, k);
     }
 
 //    public int kthGrammar(int n, int k) {
@@ -24,7 +24,7 @@ public class KthGrammer {
 //        return str.charAt(k - 1) - '0';
 //    }
 
-    public int kthGrammar(int n, int k) {
+    public static int kthGrammar(int n, int k) {
         if (n == 1 || k == 1) return 0;
         int mid = (int) Math.pow(2, n-1) / 2;
         if (mid <= k) {
