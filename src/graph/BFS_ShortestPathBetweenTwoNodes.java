@@ -2,58 +2,48 @@ package graph;
 
 import java.util.*;
 
-public class BFS {
 
+public class BFS_ShortestPathBetweenTwoNodes {
 
-    static void bfsTraversal(GraphNode startNode) {
-
-        if (startNode==null) return;
+    static List<GraphNode> getShortestPath(GraphNode startNode, GraphNode endNode) {
+        if (startNode == null || endNode == null) return null;
         Queue<GraphNode> queue = new LinkedList<>();
-        Set<GraphNode> visitedNodes = new HashSet<>();
+        Set<GraphNode> visited = new HashSet<>();
 
         queue.add(startNode);
-        visitedNodes.add(startNode);
+        visited.add(startNode);
+        HashMap<GraphNode, GraphNode> parentMap = new HashMap<>();
 
-        while (!queue.isEmpty()) {
-            GraphNode currentNode = queue.poll();
-            System.out.println(currentNode.val);
-
-            for (GraphNode node: currentNode.graphNodes) {
-                if (visitedNodes.contains(node)) {
-                    queue.add(node);
-                    visitedNodes.add(node);
-                }
-            }
-        }
-
-    }
-
-    static void bfsLevelOrderTraversal(GraphNode startNode) {
-        if (startNode == null) return;
-        Queue<GraphNode> queue = new LinkedList<>();
-        Set<GraphNode> visted = new HashSet<>();
-        queue.add(startNode);
-        visted.add(startNode);
         while (!queue.isEmpty()) {
             int size = queue.size();
             while (size-- > 0) {
                 GraphNode currentNode = queue.poll();
-                System.out.print(currentNode.val + " ");
-
                 for (GraphNode node: currentNode.graphNodes) {
-                    if (!visted.contains(node)) {
+                    if (!visited.contains(node)) {
+                        visited.add(node);
                         queue.add(node);
-                        visted.add(node);
+                        parentMap.put(node, currentNode);
                     }
                 }
-
             }
-            System.out.println();
         }
+
+        List<GraphNode> list = new ArrayList<>();
+        GraphNode currentNode = endNode;
+        for (Map.Entry<GraphNode, GraphNode> entry: parentMap.entrySet()) {
+            while (currentNode != startNode) {
+                list.add(currentNode);
+                currentNode = parentMap.get(currentNode);
+            }
+        }
+        list.add(startNode);
+
+        return list;
     }
 
 
     public static void main(String[] args) {
+
         GraphNode graphNode = new GraphNode(1);
         GraphNode graphNode2 = new GraphNode(2);
         GraphNode graphNode3 = new GraphNode(3);
@@ -66,7 +56,7 @@ public class BFS {
         GraphNode graphNode10 = new GraphNode(10);
 
         graphNode.graphNodes.addAll(Arrays.asList(graphNode2, graphNode3));
-        graphNode2.graphNodes.addAll(Arrays.asList(graphNode));
+        graphNode2.graphNodes.add(graphNode);
         graphNode3.graphNodes.addAll(Arrays.asList(graphNode, graphNode4, graphNode5));
         graphNode4.graphNodes.addAll(Arrays.asList(graphNode3, graphNode7, graphNode6));
         graphNode5.graphNodes.addAll(Arrays.asList(graphNode3, graphNode6));
@@ -76,8 +66,7 @@ public class BFS {
         graphNode9.graphNodes.add(graphNode6);
         graphNode10.graphNodes.add(graphNode6);
 
-        bfsTraversal(graphNode);
-        System.out.println("------------------------------------");
-        bfsLevelOrderTraversal(graphNode5);
+        var res = getShortestPath(graphNode5, graphNode8);
+        System.out.println(res.reversed());
     }
 }

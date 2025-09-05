@@ -12,4 +12,9 @@ public class GraphNode {
         this.graphNodes = new ArrayList<>();
     }
 
+    public String toString() {
+//        return val + "::" + String.join((CharSequence) ",", (CharSequence) this.graphNodes.stream().map(v->v).toList());
+        return val+"";
+    }
+
 }
