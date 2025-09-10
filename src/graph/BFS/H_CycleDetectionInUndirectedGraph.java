@@ -2,7 +2,7 @@ package graph.BFS;
 
 import java.util.*;
 
-public class G_CycleDetectionInUndirectedGraph {
+public class H_CycleDetectionInUndirectedGraph {
     public static void main(String[] args) {
         Map<Integer, List<Integer>> graph4 = new HashMap<>();
         graph4.put(0, Arrays.asList(1));

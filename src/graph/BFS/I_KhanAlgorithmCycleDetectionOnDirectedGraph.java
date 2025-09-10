@@ -2,7 +2,7 @@ package graph.BFS;
 
 import java.util.*;
 
-public class H_KhanAlgorithmCycleDetectionOnDirectedGraph {
+public class I_KhanAlgorithmCycleDetectionOnDirectedGraph {
     public static void main(String[] args) {
         Map<Integer, List<Integer>> graph = Map.of(
                 0, List.of(),
