@@ -1,9 +1,11 @@
-package graph;
+package graph.BFS;
+
+import graph.GraphNode;
 
 import java.util.*;
 
 
-public class BFS_ShortestPathBetweenTwoNodes {
+public class D_ShortestPathBetweenTwoNodes {
 
     static List<GraphNode> getShortestPath(GraphNode startNode, GraphNode endNode) {
         if (startNode == null || endNode == null) return null;
@@ -30,11 +32,9 @@ public class BFS_ShortestPathBetweenTwoNodes {
 
         List<GraphNode> list = new ArrayList<>();
         GraphNode currentNode = endNode;
-        for (Map.Entry<GraphNode, GraphNode> entry: parentMap.entrySet()) {
-            while (currentNode != startNode) {
-                list.add(currentNode);
-                currentNode = parentMap.get(currentNode);
-            }
+        while (currentNode != startNode) {
+            list.add(currentNode);
+            currentNode = parentMap.get(currentNode);
         }
         list.add(startNode);
 

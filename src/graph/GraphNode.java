@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GraphNode {
-    int val;
-    List<GraphNode> graphNodes;
+    public int val;
+    public List<GraphNode> graphNodes;
 
-    GraphNode(int val) {
+    public GraphNode(int val) {
         this.val = val;
         this.graphNodes = new ArrayList<>();
     }

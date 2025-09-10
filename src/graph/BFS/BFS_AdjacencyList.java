@@ -1,13 +1,15 @@
-package graph;
+package graph.BFS;
+
+import graph.GraphNode;
 
 import java.util.*;
 
-public class BFS {
+public class BFS_AdjacencyList {
 
 
     static void bfsTraversal(GraphNode startNode) {
 
-        if (startNode==null) return;
+        if (startNode == null) return;
         Queue<GraphNode> queue = new LinkedList<>();
         Set<GraphNode> visitedNodes = new HashSet<>();
 
